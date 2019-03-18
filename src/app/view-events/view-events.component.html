@@ -1,0 +1,35 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div class="flex-container">
+            <h3 style="align-self: center">View Events of Outreach</h3>
+            
+        </div>
+        <table id="customers">
+		  <tr>
+			<th>Council Name</th>
+			<th>Event Name</th>
+			<th>Project</th>
+			<th>Project Category</th>
+			<th>Event Date</th>
+			<th>Action</th>
+		  </tr>
+		  <tr *ngFor="let eventInfo of eventInfos;let i=index">
+				<td>{{ getCouncilName(eventInfo.councilId).name }}</td>
+				<td>{{ eventInfo.name }}</td>
+				<td>{{ getProjectName(eventInfo.projectId).name }}</td>
+				<td>{{ eventInfo.categoryId }}</td>
+				<td>02-02-2019</td>
+				<td>
+					<input type="button" name="viewEvent{{i}}" value="View" *ngIf="userAdmin">
+					<input type="button" name="registerEvent{{i}}" value="Register" *ngIf="userAssociate" routerLink="../registerevent">
+				</td>
+		  </tr>
+		</table>
+		<div class='downloadExcel'>
+			<button type="button" class="btn btn-info" (click)="Download()" >Download Report</button>
+		</div>
+    </body>
+</html>

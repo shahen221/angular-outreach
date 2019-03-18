@@ -1,0 +1,17 @@
+<div class='loadExcelInput'>
+    <div class="flex-container" >
+      <h3 style="align-self: center">Create Bulk Events</h3>
+    <div>
+    <input type="file" title="Create Bulk Events" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload Bulk Events file" accept=".xlsx">
+    <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+</div>
+
+<div style="color:green;" *ngIf="uploadedFiles>0">
+  <span>Successfully Uploaded</span> {{uploadedFiles}} <span>Records</span>
+</div>
+
+<div style="color:red;" *ngIf="failure">
+  <span>Failed to Uploaded File! Please Upload Correct File.</span>
+</div>
+
+  

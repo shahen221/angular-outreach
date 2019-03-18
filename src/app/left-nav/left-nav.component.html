@@ -1,0 +1,24 @@
+<div *ngIf="page == 'admin'">
+    Hi Admin
+    <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
+    <a class="nav-item nav-link" routerLink="favoriteevents" >Favorite Events</a>
+    <a class="nav-item nav-link" routerLink="createevent"  >Create Event</a>
+    <a class="nav-item nav-link" routerLink="createrole" >Create Role</a>
+    <a class="nav-item nav-link" routerLink="createbulkevent" >Create Bulk Event</a>
+</div>
+<div *ngIf="page == 'pmo'">
+    Hi PMO
+    <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
+</div>
+<div *ngIf="page == 'poc'">
+    Hi POC
+    <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
+</div>
+<div *ngIf="page == 'associate'">
+    Hi Associate
+    <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
+    <a class="nav-item nav-link" routerLink="myevents" >My Events</a>
+    <a class="nav-item nav-link" routerLink="registerevent" >Register Event</a>
+    <a class="nav-item nav-link" routerLink="createbulkregistration" >Create Bulk Registration</a>
+</div>
+<a class="nav-item nav-link active" style="color:red;" href="#" (click)="clickActive($event,'')">Logout</a>

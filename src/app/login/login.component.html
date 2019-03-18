@@ -1,0 +1,45 @@
+<html>
+    <head>
+        
+    </head>
+    <body style="text-align:center;">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="container" style="background-color:#f1f1f1;width: 500px">
+          <div class="flex-container">
+              <div class="container">
+          <div>
+            <label for="username"><b>Username : </b></label>
+            <input type="text" placeholder="Enter Username" formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+    
+          </div><br>
+          <div>
+            <label for="psw"><b>Password : </b></label>
+            <input type="password" placeholder="Enter Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+           
+            <div *ngIf="submitted && f.password.errors" class="invalid">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </div>
+          <div style="color:red;" *ngIf="failure">
+              <span>Failed to Login! Please Provide Correct Credentials.</span>
+            </div>
+        </div>
+        
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+          <button type="submit" [disabled]="loading" class="btn btn-primary">Login</button>
+          <div>
+            <a class="active" href="#" (click)="clickActive($event,'createrole')">Register</a>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
+            <br>
+            <span class="psw">Forgot <a class="active" href="#" (click)="clickActive($event,'')">password?</a></span>
+          </div>
+          </div>
+          </div>
+      </form>
+    </body>
+</html>

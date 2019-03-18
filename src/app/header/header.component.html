@@ -1,0 +1,15 @@
+<nav class="navbar navbar-dark bg-dark mb-5">
+    <a class="navbar-brand" href="/">Welcome to Outreach</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#" (click)="clickActive($event,'')">Home</a>
+        <a class="nav-item nav-link" href="#" (click)="clickActive($event,'about')">About</a>
+        <a class="nav-item nav-link" href="#" (click)="clickActive($event,'contact')">Contact</a>
+      </div>
+    </div>
+    <div class="navbar-expand ml-auto navbar-nav">
+      <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#" (click)="clickActive($event,'login')">Login</a>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,139 @@
+<html>
+    <head></head>
+    <body>
+        <form [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+            <div class="flex-container" >
+                <h3 style="align-self: center">Create Event for Outreach</h3>
+                <div>
+                    Location: 
+                    <select formControlName="location" #locationSelected [ngClass]="{ 'is-invalid': submitted && f.location.errors }" (change)="loadLocationDetails(locationSelected)">
+                        <option *ngFor="let location of locations" value="{{location.id}}">{{ location.name }}</option>
+                    </select>
+                    <div *ngIf="submitted && f.location.errors" class="invalid">
+                        <div *ngIf="f.location.errors.required">Location is required</div>
+                    </div>
+                </div>
+                <div>
+                    Beneficiary Name:
+                    <select formControlName="beneficiaryName"  [ngClass]="{ 'is-invalid': submitted && f.beneficiaryName.errors }">
+                        <option *ngFor="let beneficiary of beneficiaries" value="{{beneficiary.id}}">{{beneficiary.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.beneficiaryName.errors" class="invalid">
+                        <div *ngIf="f.beneficiaryName.errors.required">Beneficiary Name is required</div>
+                    </div>
+                </div>
+                <div>
+                    Council Name:
+                    <select formControlName="councilName"  [ngClass]="{ 'is-invalid': submitted && f.councilName.errors }">
+                        <option *ngFor="let council of councils" value="{{council.id}}">{{council.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.councilName.errors" class="invalid">
+                        <div *ngIf="f.councilName.errors.required">Council Name is required</div>
+                    </div>
+                </div>
+                <div>
+                    Project:
+                    <select formControlName="project" #projectSelected  [ngClass]="{ 'is-invalid': submitted && f.project.errors }" (change)="loadCategories(projectSelected)">
+                        <option *ngFor="let project of projects" value="{{project.id}}">{{project.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.project.errors" class="invalid">
+                        <div *ngIf="f.project.errors.required">Project is required</div>
+                    </div>
+                </div>
+                <div>
+                    Category:
+                    <select formControlName="category"  [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                        <option *ngFor="let category of categories;let i=index" value="{{i+1}}">{{category.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.category.errors" class="invalid">
+                        <div *ngIf="f.category.errors.required">Category is required</div>
+                    </div>
+                </div>
+                <div>
+                    Event Title:
+                    <input type="text" name="eventTitle" formControlName="eventTitle"  [ngClass]="{ 'is-invalid': submitted && f.eventTitle.errors }">
+                    <div *ngIf="submitted && f.eventTitle.errors" class="invalid">
+                        <div *ngIf="f.eventTitle.errors.required">Event Title is required</div>
+                    </div>
+                </div>
+                <div>
+                    Event Description:
+                    <textarea name="eventDesc" cols="10" rows="5" formControlName="eventDesc"  [ngClass]="{ 'is-invalid': submitted && f.eventDesc.errors }">
+                    </textarea>
+                    <div *ngIf="submitted && f.eventDesc.errors" class="invalid">
+                        <div *ngIf="f.eventDesc.errors.required">Event Description is required</div>
+                    </div>
+                </div>
+                <div>
+                    Event Start Time:
+                    <input type="datetime-local" name="eventStartDateTime" formControlName="eventStartDateTime"  [ngClass]="{ 'is-invalid': submitted && f.eventStartDateTime.errors }">
+                    <div *ngIf="submitted && f.eventStartDateTime.errors" class="invalid">
+                        <div *ngIf="f.eventStartDateTime.errors.required">Event Start Time is required</div>
+                    </div>
+                </div>
+                <div>
+                    Event End Time:
+                    <input type="datetime-local" name="eventEndDateTime" formControlName="eventEndDateTime"  [ngClass]="{ 'is-invalid': submitted && f.eventEndDateTime.errors }">
+                    <div *ngIf="submitted && f.eventEndDateTime.errors" class="invalid">
+                        <div *ngIf="f.eventEndDateTime.errors.required">Event End Time is required</div>
+                    </div>
+                </div>
+                <div>
+                    Total Volunteers:
+                    <input type="text" name="volunteerCount" formControlName="volunteerCount"  [ngClass]="{ 'is-invalid': submitted && f.volunteerCount.errors }">
+                    <div *ngIf="submitted && f.volunteerCount.errors" class="invalid">
+                        <div *ngIf="f.volunteerCount.errors.required">Total Volunteers is required</div>
+                    </div>
+                </div>
+                <div>
+                    POC ID:
+                    <input type="text" name="pocId" formControlName="pocId"  [ngClass]="{ 'is-invalid': submitted && f.pocId.errors }">
+                    <div *ngIf="submitted && f.pocId.errors" class="invalid">
+                        <div *ngIf="f.pocId.errors.required">POC ID is required</div>
+                    </div>
+                </div>
+                <div>
+                    Transport Boarding Type:
+                    <select formControlName="transportBoardingType"  [ngClass]="{ 'is-invalid': submitted && f.transportBoardingType.errors }">
+                        <option value="1">Fixed</option>
+                        <option value="2">Floating</option>
+                        <option value="3">No Transport</option>
+                    </select>
+                    <div *ngIf="submitted && f.transportBoardingType.errors" class="invalid">
+                        <div *ngIf="f.transportBoardingType.errors.required">Transport Boarding Type is required</div>
+                    </div>
+                </div>
+                <div>
+                    Transport Boarding Point:
+                    <select formControlName="transportBoardingPoint"  [ngClass]="{ 'is-invalid': submitted && f.transportBoardingPoint.errors }">
+                        <option>Velachery</option>
+                        <option>Meenambakam</option>
+                        <option>Pallavaram</option>
+                        <option>Chromepet</option>
+                    </select>
+                    <div *ngIf="submitted && f.transportBoardingPoint.errors" class="invalid">
+                        <div *ngIf="f.transportBoardingPoint.errors.required">Transport Boarding Point is required</div>
+                    </div>
+                </div>
+                <div>
+                    Transport Drop Point:
+                    <select formControlName="transportDropPoint"  [ngClass]="{ 'is-invalid': submitted && f.transportDropPoint.errors }">
+                        <option>Velachery</option>
+                        <option>Meenambakam</option>
+                        <option>Pallavaram</option>
+                        <option>Chromepet</option>
+                    </select>
+                    <div *ngIf="submitted && f.transportDropPoint.errors" class="invalid">
+                        <div *ngIf="f.transportDropPoint.errors.required">Transport Drop Point is required</div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="loading" class="btn btn-primary" name="createEvent">Create Event</button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
+                    <br>
+                    <input type="button" name="backEvent" value="Back" (click)="backClicked()">
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

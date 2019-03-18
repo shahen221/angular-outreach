@@ -1,0 +1,54 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <form [formGroup]="createRoleForm" (ngSubmit)="onSubmit()">
+            <div class="flex-container">
+                <div>
+                    Employee ID: 
+                    <input type="text" placeholder="Enter Employee ID" formControlName="associateId"  [ngClass]="{ 'is-invalid': submitted && f.associateId.errors }" />
+                    <div *ngIf="submitted && f.associateId.errors" class="invalid">
+                        <div *ngIf="f.associateId.errors.required">Employee ID is required</div>
+                    </div>
+                </div>
+                <div>
+                    Employee Name:
+                    <input type="text" placeholder="Enter Username" formControlName="associateName"  [ngClass]="{ 'is-invalid': submitted && f.associateName.errors }" />
+                    <div *ngIf="submitted && f.associateName.errors" class="invalid">
+                        <div *ngIf="f.associateName.errors.required">Employee Name is required</div>
+                    </div>
+                </div>
+                <div>
+                        Password:
+                        <input type="text" placeholder="Enter Password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                <div>
+                    Date of Birth:
+                    <input type="datetime-local" name="dob" formControlName="dob"  [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+                    <div *ngIf="submitted && f.dob.errors" class="invalid">
+                        <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                    </div>
+                </div>
+                <div>
+                    Role Name:
+                    <select name="role" formControlName="role"  [ngClass]="{ 'is-invalid': submitted && f.role.errors }" >
+                        <option>Admin</option>
+                        <option>PMO</option>
+                        <option>POC</option>
+                    </select>
+                    <div *ngIf="submitted && f.role.errors" class="invalid">
+                        <div *ngIf="f.role.errors.required">Role Name is required</div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="loading" class="btn btn-primary" name="createRole">Register</button>
+                    <input type="button" name="cancelCreateRole" value="Cancel" (click)="cancel()">
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

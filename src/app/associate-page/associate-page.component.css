@@ -1,0 +1,13 @@
+.container {
+    overflow: hidden;
+ }
+ 
+ .sidebar {
+    float: left;
+    width: 20%;
+}
+
+.content-wrap {
+    float: right;
+    width: 80%;
+} 
