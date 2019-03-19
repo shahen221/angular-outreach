@@ -33,6 +33,7 @@ import { LocationService } from './service/location.service';
 import { BeneficiaryService } from './service/beneficiary.service';
 import { BoardingTypeService } from './service/boardingtype.service';
 import { BusinessUnitService } from './service/businessunit.service';
+import { RegisterService } from './service/register.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { BusinessUnitService } from './service/businessunit.service';
               LocationService,
               BeneficiaryService,
               BoardingTypeService,
-              BusinessUnitService],
+              BusinessUnitService,
+              RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

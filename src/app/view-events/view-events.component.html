@@ -24,7 +24,7 @@
 				<td>02-02-2019</td>
 				<td>
 					<input type="button" name="viewEvent{{i}}" value="View" *ngIf="userAdmin">
-					<input type="button" name="registerEvent{{i}}" value="Register" *ngIf="userAssociate" routerLink="../registerevent">
+					<input type="button" name="registerEvent{{i}}" value="Register" *ngIf="userAssociate" [routerLink]="['../registerevent',eventInfo.id]">
 				</td>
 		  </tr>
 		</table>

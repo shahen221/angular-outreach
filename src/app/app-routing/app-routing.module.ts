@@ -44,7 +44,7 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'viewevents' },
     { path: 'viewevents', component: ViewEventsComponent},
     { path: 'myevents', component: MyEventsComponent},
-    { path: 'registerevent', component: RegisterEventComponent},
+    { path: 'registerevent/:id', component: RegisterEventComponent},
     { path: 'createbulkregistration', component: CreatebulkregistrationComponent}
   ]}
   

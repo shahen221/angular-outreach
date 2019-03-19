@@ -22,4 +22,8 @@ export class EventService {
         console.log('Inside Event Service before bulk save');
         return this.http.post(this.serviceurl+'bulksave', events);
     }
+
+    getEventById(id: number) : any{
+        return this.http.get(this.serviceurl+id);
+    }
 }

@@ -62,10 +62,26 @@ export class ViewEventsComponent implements OnInit {
         result.forEach(element => {
           console.log('element: ', element);
           var eventInfo: EventInfo = {
-            name : element.title,
+            id: element.id,
+            beneficiaryId: element.beneficiaryId,
             councilId: element.councilId,
             projectId: element.projectId,
-            categoryId: element.categoryId
+            categoryId: element.categoryId,
+            name : element.title,
+            desc: element.description,
+            startTime: element.startTime,
+            endTime: element.endTime,
+            status: element.status,
+            volunteers: element.volunteers,
+            pocId: element.pocId,
+            pocContactNo: element.pocContactNo,
+            locationId: element.locationId,
+            venueAddress: element.venueAddress,
+            boardingTypeId: element.boardingTypeId,
+            boardingPoints: element.boardingPoints,
+            dropPoints: element.dropPoints,
+            updatedBy: element.updatedBy,
+            favorite: element.favorite
           };
           console.log('eventInfo : ',eventInfo);
           this.eventInfos.push(eventInfo);

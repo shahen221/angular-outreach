@@ -15,27 +15,9 @@ export class BusinessUnitService implements OnInit{
     }
 
     ngOnInit(){
-        this.getAllBusinessUnits().subscribe(
-            (result: any) => {
-                console.log('Business Units retrieved successfully');
-            },
-            (error: any) => {
-                console.log('Error occured while retrieving business units.');
-            }
-        );
     }
 
     getAllBusinessUnits(): any{
-        return this.http.get(this.serviceUrl).pipe(
-            map(
-                (result: any) => {
-                    var businessUnit = {
-                        id: result.id,
-                        name: result.name
-                    }
-                    this.businessUnits.push(businessUnit);
-                }
-            )
-        );
+        return this.http.get(this.serviceUrl);
     }
 }
