@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { EventService } from '../service/event.service';
-import { LocationService } from '../service/location.service';
-import { ProjectService } from '../service/project.service';
-import { BeneficiaryService } from '../service/beneficiary.service';
-import { CouncilService } from '../service/council.service';
-import { CategoryService } from '../service/category.service';
-import { BoardingTypeService } from '../service/boardingtype.service';
+import { LocationService } from '../../catalog/service/location.service';
+import { ProjectService } from '../../catalog/service/project.service';
+import { BeneficiaryService } from '../../catalog/service/beneficiary.service';
+import { CouncilService } from '../../catalog/service/council.service';
+import { CategoryService } from '../../catalog/service/category.service';
+import { BoardingTypeService } from '../../catalog/service/boardingtype.service';
 
 @Component({
   selector: 'app-createbulkevent',

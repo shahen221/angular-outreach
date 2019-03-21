@@ -11,4 +11,8 @@ export class CategoryService{
     getCategoryByProject(projectId: number):any{
         return this.http.get(this.serviceUrl+projectId);
     }
+
+    getCategoryName(projectId: number, categoryId: number): any{
+        return this.http.get(this.serviceUrl+projectId+"/"+categoryId);
+    }
 }

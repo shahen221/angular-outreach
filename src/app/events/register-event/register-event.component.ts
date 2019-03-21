@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BusinessUnitService } from '../service/businessunit.service';
-import { BusinessUnit } from '../model/businessunit';
+import { BusinessUnitService } from '../../catalog/service/businessunit.service';
+import { BusinessUnit } from '../../catalog/model/businessunit';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EventInfo } from '../model/eventinfo';

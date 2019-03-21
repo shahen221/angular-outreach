@@ -3,16 +3,16 @@ import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateEventInfo } from './CreateEvent.model';
-import { LocationService } from '../service/location.service';
-import { LocationInfo } from '../model/locationinfo';
-import { BeneficiaryService } from '../service/beneficiary.service';
-import { BeneficiaryInfo } from '../model/beneficiaryinfo';
-import { CouncilService } from '../service/council.service';
-import { CouncilInfo } from '../model/councilinfo';
-import { ProjectService } from '../service/project.service';
-import { ProjectInfo } from '../model/projectinfo';
-import { CategoryService } from '../service/category.service';
-import { CategoryInfo } from '../model/categoryinfo';
+import { LocationService } from '../../catalog/service/location.service';
+import { LocationInfo } from '../../catalog/model/locationinfo';
+import { BeneficiaryService } from '../../catalog/service/beneficiary.service';
+import { BeneficiaryInfo } from '../../catalog/model/beneficiaryinfo';
+import { CouncilService } from '../../catalog/service/council.service';
+import { CouncilInfo } from '../../catalog/model/councilinfo';
+import { ProjectService } from '../../catalog/service/project.service';
+import { ProjectInfo } from '../../catalog/model/projectinfo';
+import { CategoryService } from '../../catalog/service/category.service';
+import { CategoryInfo } from '../../catalog/model/categoryinfo';
 import { EventService } from '../service/event.service';
 
 @Component({

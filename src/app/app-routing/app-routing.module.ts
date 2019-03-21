@@ -4,19 +4,19 @@ import {RouterModule, Routes} from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
-import { LoginComponent } from '../login/login.component';
-import { CreateeventComponent } from '../createevent/createevent.component';
+import { LoginComponent } from '../auth/login/login.component';
+import { CreateeventComponent } from '../events/createevent/createevent.component';
 import { AdminPageComponent } from '../admin-page/admin-page.component';
 import { PmoPageComponent } from '../pmo-page/pmo-page.component';
 import { PocPageComponent } from '../poc-page/poc-page.component';
 import { AssociatePageComponent } from '../associate-page/associate-page.component';
-import { ViewEventsComponent } from '../view-events/view-events.component';
-import { RegisterEventComponent } from '../register-event/register-event.component';
-import { MyEventsComponent } from '../my-events/my-events.component';
-import { FavoriteEventsComponent } from '../favorite-events/favorite-events.component';
+import { ViewEventsComponent } from '../events/view-events/view-events.component';
+import { RegisterEventComponent } from '../events/register-event/register-event.component';
+import { MyEventsComponent } from '../events/my-events/my-events.component';
+import { FavoriteEventsComponent } from '../events/favorite-events/favorite-events.component';
 import { CreateRoleComponent } from '../create-role/create-role.component';
-import { CreatebulkeventComponent } from '../createbulkevent/createbulkevent.component';
-import { CreatebulkregistrationComponent } from '../createbulkregistration/createbulkregistration.component';
+import { CreatebulkeventComponent } from '../events/createbulkevent/createbulkevent.component';
+import { CreatebulkregistrationComponent } from '../events/createbulkregistration/createbulkregistration.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

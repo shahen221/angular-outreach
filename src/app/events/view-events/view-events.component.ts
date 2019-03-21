@@ -3,13 +3,14 @@ import * as XLSX from 'xlsx';
 import {saveAs} from 'file-saver';
 import { EventService } from '../service/event.service';
 import { EventInfo } from '../model/eventinfo';
-import { CouncilService } from '../service/council.service';
-import { CouncilInfo } from '../model/councilinfo';
-import { ProjectInfo } from '../model/projectinfo';
-import { CategoryInfo } from '../model/categoryinfo';
-import { ProjectService } from '../service/project.service';
-import { CategoryService } from '../service/category.service';
-import { LoginService } from '../service/login.service';
+import { CouncilService } from '../../catalog/service/council.service';
+import { CouncilInfo } from '../../catalog/model/councilinfo';
+import { ProjectInfo } from '../../catalog/model/projectinfo';
+import { CategoryInfo } from '../../catalog/model/categoryinfo';
+import { ProjectService } from '../../catalog/service/project.service';
+import { CategoryService } from '../../catalog/service/category.service';
+import { LoginService } from '../../auth/service/login.service';
+import { CatalogService } from '../../catalog/catalog.service';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -47,9 +48,14 @@ export class ViewEventsComponent implements OnInit {
               private councilService : CouncilService,
               private projectService: ProjectService,
               private categoryService: CategoryService,
-              private loginService: LoginService) { }
+              private loginService: LoginService,
+              private catalogService: CatalogService) {
+                catalogService.getCatalogs();
+               }
 
   ngOnInit() {
+    this.catalogService.getCatalogs();
+    
     var userRole = this.loginService.getUserRole();
     console.log('Inside View Events Component, user role: ', userRole);
     if(userRole == 'Admin'){
@@ -91,64 +97,25 @@ export class ViewEventsComponent implements OnInit {
         console.log('Error occured while retrieving all events');
       }
     );
-    this.councilService.getAllCouncils().subscribe(
-      (result: any) => {
-        result.forEach(element => {
-          console.log('council element: ', element);
-          this.councils.push({
-            name : element.name,
-            id: element.id,
-            locationId: element.locationId
-          });
-        });
-      },
-      (error: any) => {
-        console.log('Error occured while retrieving all councils');
-      }
-    );
-    this.projectService.getAllProjects().subscribe(
-      (result: any) => {
-        result.forEach(element => {
-          console.log('project element: ', element);
-          this.projects.push({
-            name : element.name,
-            id: element.id
-          });
-        });
-      },
-      (error: any) => {
-        console.log('Error occured while retrieving all projects');
-      }
-    );
     
   }
 
-  getCouncilName(councilId: number):CouncilInfo{
-    return this.councils[councilId-1];
+  getCouncilName(councilId: number):string{
+    this.councils=this.catalogService.councils;
+    return this.councils[councilId-1].name;
   }
 
-  getProjectName(projectId: number): ProjectInfo{
-    return this.projects[projectId-1];
+  getProjectName(projectId: number): string{
+    this.catalogService.getProjectCategory(projectId);
+    this.projects=this.catalogService.projects;
+    console.log('Projects from CatalogService: ', this.projects);
+    return this.projects[projectId-1].name;
   }
 
-  getCategoryName(projectId: number, categoryId: number):CategoryInfo{
-    return this.categoryService.getCategoryByProject(projectId).subscribe(
-      (result: any) => {
-        result.forEach(element => {
-          console.log('category element: ', element);
-          this.categories.push({
-            name : element.name,
-            id: element.id,
-            projectId: element.projectId
-          });
-        });
-        return this.categories[categoryId-1];
-      },
-      (error: any) => {
-        console.log('Error occured while retrieving all categories');
-        return {};
-      }
-    );
+  getCategoryName(projectId: number, categoryId: number):string{
+    this.catalogService.getCategoryName(projectId,categoryId);
+    console.log('Category Name from CatalogService: ', this.catalogService.categoryName);
+    return this.catalogService.categoryName;
   }
   
   Download(){

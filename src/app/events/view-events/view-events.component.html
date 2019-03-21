@@ -17,10 +17,10 @@
 			<th>Action</th>
 		  </tr>
 		  <tr *ngFor="let eventInfo of eventInfos;let i=index">
-				<td>{{ getCouncilName(eventInfo.councilId).name }}</td>
+				<td>{{ getCouncilName(eventInfo.councilId) }}</td>
 				<td>{{ eventInfo.name }}</td>
-				<td>{{ getProjectName(eventInfo.projectId).name }}</td>
-				<td>{{ eventInfo.categoryId }}</td>
+				<td>{{ getProjectName(eventInfo.projectId) }}</td>
+				<td>{{ getCategoryName(eventInfo.projectId,eventInfo.categoryId) | async}}</td>
 				<td>02-02-2019</td>
 				<td>
 					<input type="button" name="viewEvent{{i}}" value="View" *ngIf="userAdmin">
