@@ -14,6 +14,10 @@ import { ProjectInfo } from '../../catalog/model/projectinfo';
 import { CategoryService } from '../../catalog/service/category.service';
 import { CategoryInfo } from '../../catalog/model/categoryinfo';
 import { EventService } from '../service/event.service';
+import { CatalogService } from '../../catalog/catalog.service';
+import { BoardingType } from '../../catalog/model/boardingtype';
+import { BoardingPoints } from '../../catalog/model/boardingpoints';
+import { DropPoints } from '../../catalog/model/droppoints';
 
 @Component({
   selector: 'app-createevent',
@@ -31,6 +35,10 @@ export class CreateeventComponent implements OnInit {
   councils: CouncilInfo[] = [];
   projects: ProjectInfo[] = [];
   categories: CategoryInfo[]=[];
+  boardingTypes: BoardingType[]=[];
+  boardingPoints: BoardingPoints[]=[];
+  dropPoints: DropPoints[]=[];
+  locationId:number;
 
   constructor(private _location:Location,
     private formBuilder: FormBuilder,
@@ -41,7 +49,8 @@ export class CreateeventComponent implements OnInit {
     private councilService: CouncilService,
     private projectService: ProjectService,
     private categoryService: CategoryService,
-    private eventService: EventService
+    private eventService: EventService,
+    private catalogService: CatalogService
   ) { }
 
   ngOnInit() {
@@ -77,6 +86,7 @@ export class CreateeventComponent implements OnInit {
         console.log('Error while retrieving projects');
       }
     );
+    this.catalogService.getBoardingTypes();
     this.createEventForm = this.formBuilder.group({
       location: ['', Validators.required],
       beneficiaryName: ['', Validators.required],
@@ -113,19 +123,45 @@ export class CreateeventComponent implements OnInit {
       this.loading = false;
         return;
     }else{
-      var eventInfo={
-        beneficiaryId : this.createEventForm.value.beneficiaryName,
-        councilId: this.createEventForm.value.councilName,
+      var beneficiary = {
+        id: this.createEventForm.value.beneficiaryName,
+        name: '',
+        locationId: this.createEventForm.value.location
+      };
+      console.log('Beneficiary object: ',beneficiary);
+      var council = {
+        id: this.createEventForm.value.councilName,
+        name: '',
+        locationId: this.createEventForm.value.location
+      };
+      console.log('Council object: ',council);
+      var projectCategory = {
+        id: this.createEventForm.value.category,
         projectId: this.createEventForm.value.project,
-        categoryId: this.createEventForm.value.category,
+        name: ''
+      };
+      console.log('Project Category object: ',projectCategory);
+      var location = {
+        id: this.createEventForm.value.location,
+        name: '',
+        state: '',
+        country: ''
+      };
+      console.log('location object: ',location);
+      var eventInfo={
+        beneficiary : beneficiary,
+        council: council,
+        projectCategory: projectCategory,
         title: this.createEventForm.value.eventTitle,
         description: this.createEventForm.value.eventDesc,
         startTime: this.createEventForm.value.eventStartDateTime,
         endTime: this.createEventForm.value.eventEndDateTime,
         volunteers: this.createEventForm.value.volunteerCount,
         pocId: this.createEventForm.value.pocId,
-        locationId: this.createEventForm.value.location,
-        boardingTypeId: this.createEventForm.value.transportBoardingType
+        location: location,
+        boardingTypeId: this.createEventForm.value.transportBoardingType,
+        boardingPoints: this.createEventForm.value.transportBoardingPoint,
+        dropPoints: this.createEventForm.value.transportDropPoint
       };
       console.log('eventInfo: ',eventInfo);
       this.eventService.saveEvent(eventInfo).subscribe(
@@ -148,6 +184,8 @@ export class CreateeventComponent implements OnInit {
   }
 
   loadLocationDetails(locationId){
+    this.locationId = locationId.value;
+    this.boardingTypes = this.catalogService.boardingTypes;
     this.beneficiaryService.getBeneficiaries(locationId.value).subscribe(
       (result: any) => {
         console.log('Retrieved Beneficiaries');
@@ -180,6 +218,15 @@ export class CreateeventComponent implements OnInit {
         console.log('Error while retrieving council info');
       }
     );
+    this.catalogService.getBoardingPoints(this.locationId);
+    this.catalogService.getDropPoints(this.locationId);
+  }
+
+  loadBoardingDropPoints(boardingType:number){
+    if(boardingType == 1){
+      this.boardingPoints = this.catalogService.boardingPoints;
+      this.dropPoints = this.catalogService.dropPoints;
+    }
   }
 
   loadCategories(projectId){

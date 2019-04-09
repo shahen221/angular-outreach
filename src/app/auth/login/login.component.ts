@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.loginService.validateUser(this.loginForm.value.username, this.loginForm.value.password ).subscribe(
         (result : any) => {
           this.roleName = result.roleName;
-            console.log('role returned from login service: ', this.roleName);
+            console.log('Data returned from login service: ', result);
             if(this.roleName != null && this.roleName == "Admin"){
               this.router.navigateByUrl("adminPage");
             }else if(this.roleName != null && this.roleName == "PMO"){

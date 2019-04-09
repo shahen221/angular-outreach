@@ -17,6 +17,7 @@ import { FavoriteEventsComponent } from '../events/favorite-events/favorite-even
 import { CreateRoleComponent } from '../create-role/create-role.component';
 import { CreatebulkeventComponent } from '../events/createbulkevent/createbulkevent.component';
 import { CreatebulkregistrationComponent } from '../events/createbulkregistration/createbulkregistration.component';
+import { ShowwillingnessComponent } from '../events/showwillingness/showwillingness.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -43,8 +44,9 @@ const routes: Routes = [
   { path: 'associatePage', component: AssociatePageComponent , children:[
     { path: '', pathMatch: 'full', redirectTo: 'viewevents' },
     { path: 'viewevents', component: ViewEventsComponent},
-    { path: 'myevents', component: MyEventsComponent},
+    { path: 'myevents/:associateid', component: MyEventsComponent},
     { path: 'registerevent/:id', component: RegisterEventComponent},
+    { path: 'showwillingness', component: ShowwillingnessComponent},
     { path: 'createbulkregistration', component: CreatebulkregistrationComponent}
   ]}
   

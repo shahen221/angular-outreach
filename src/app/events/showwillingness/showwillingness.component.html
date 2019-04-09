@@ -1,0 +1,34 @@
+ <html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <form [formGroup]="associateWillingnessForm" (ngSubmit)="onSubmit()">
+                <div>
+                    Location:
+                    <select name="locationName" formControlName="locationName">
+                        <option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</option>
+                    </select>
+                </div>
+                <div>
+                    Available Start Time:
+                    <input type="datetime-local" name="availableStartTime" formControlName="availableStartTime" [ngClass]="{ 'is-invalid': submitted && f.availableStartTime.errors }">
+                    <div *ngIf="submitted && f.availableStartTime.errors" class="invalid">
+                        <div *ngIf="f.availableStartTime.errors.required">Available Start Time is required</div>
+                    </div>
+                </div>
+                <div>
+                    Available End Time:
+                    <input type="datetime-local" name="availableEndTime" formControlName="availableEndTime" [ngClass]="{ 'is-invalid': submitted && f.availableEndTime.errors }">
+                    <div *ngIf="submitted && f.availableEndTime.errors" class="invalid">
+                        <div *ngIf="f.availableEndTime.errors.required">Available End Time is required</div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary" name="saveWillingness">Submit Willingness</button>
+                </div>
+            </form>
+    </div>
+  </body>
+ </html>
+ 

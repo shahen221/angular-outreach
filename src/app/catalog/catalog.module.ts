@@ -7,6 +7,8 @@ import { CategoryService } from './service/category.service';
 import { LocationService } from './service/location.service';
 import { BeneficiaryService } from './service/beneficiary.service';
 import { BoardingTypeService } from './service/boardingtype.service';
+import { BoardingPointsService } from './service/boardingpoints.service';
+import { DropPointsService } from './service/droppoints.service';
 import { BusinessUnitService } from './service/businessunit.service';
 
 @NgModule({
@@ -21,7 +23,10 @@ import { BusinessUnitService } from './service/businessunit.service';
               LocationService,
               BeneficiaryService,
               BoardingTypeService,
-              BusinessUnitService],
+              BusinessUnitService,
+              BoardingTypeService,
+              BoardingPointsService,
+              DropPointsService],
   exports: []
 })
 export class CatalogModule { }

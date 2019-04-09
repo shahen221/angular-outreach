@@ -58,7 +58,7 @@
                 </div>
                 <div>
                     Event Description:
-                    <textarea name="eventDesc" cols="10" rows="5" formControlName="eventDesc"  [ngClass]="{ 'is-invalid': submitted && f.eventDesc.errors }">
+                    <textarea name="eventDesc" cols="80" rows="5" formControlName="eventDesc"  [ngClass]="{ 'is-invalid': submitted && f.eventDesc.errors }">
                     </textarea>
                     <div *ngIf="submitted && f.eventDesc.errors" class="invalid">
                         <div *ngIf="f.eventDesc.errors.required">Event Description is required</div>
@@ -94,10 +94,8 @@
                 </div>
                 <div>
                     Transport Boarding Type:
-                    <select formControlName="transportBoardingType"  [ngClass]="{ 'is-invalid': submitted && f.transportBoardingType.errors }">
-                        <option value="1">Fixed</option>
-                        <option value="2">Floating</option>
-                        <option value="3">No Transport</option>
+                    <select formControlName="transportBoardingType" #boardingTypeSelected [ngClass]="{ 'is-invalid': submitted && f.transportBoardingType.errors }" (change)="loadBoardingDropPoints(boardingTypeSelected)">
+                        <option *ngFor="let boardingType of boardingTypes" value="{{boardingType.id}}">{{boardingType.name}}</option>
                     </select>
                     <div *ngIf="submitted && f.transportBoardingType.errors" class="invalid">
                         <div *ngIf="f.transportBoardingType.errors.required">Transport Boarding Type is required</div>
@@ -106,10 +104,7 @@
                 <div>
                     Transport Boarding Point:
                     <select formControlName="transportBoardingPoint"  [ngClass]="{ 'is-invalid': submitted && f.transportBoardingPoint.errors }">
-                        <option>Velachery</option>
-                        <option>Meenambakam</option>
-                        <option>Pallavaram</option>
-                        <option>Chromepet</option>
+                        <option *ngFor="let boardingPoint of boardingPoints" value="{{boardingPoint.id}}">{{boardingPoint.name}}</option>
                     </select>
                     <div *ngIf="submitted && f.transportBoardingPoint.errors" class="invalid">
                         <div *ngIf="f.transportBoardingPoint.errors.required">Transport Boarding Point is required</div>
@@ -118,10 +113,7 @@
                 <div>
                     Transport Drop Point:
                     <select formControlName="transportDropPoint"  [ngClass]="{ 'is-invalid': submitted && f.transportDropPoint.errors }">
-                        <option>Velachery</option>
-                        <option>Meenambakam</option>
-                        <option>Pallavaram</option>
-                        <option>Chromepet</option>
+                        <option *ngFor="let dropPoint of dropPoints" value="{{dropPoint.id}}">{{dropPoint.name}}</option>
                     </select>
                     <div *ngIf="submitted && f.transportDropPoint.errors" class="invalid">
                         <div *ngIf="f.transportDropPoint.errors.required">Transport Drop Point is required</div>

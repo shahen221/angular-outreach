@@ -43,6 +43,7 @@ export class ViewEventsComponent implements OnInit {
   categories: CategoryInfo[] = [];
   userAdmin: boolean;
   userAssociate: boolean;
+  locationId: number = 1;
  
   constructor(private eventService : EventService, 
               private councilService : CouncilService,
@@ -50,12 +51,10 @@ export class ViewEventsComponent implements OnInit {
               private categoryService: CategoryService,
               private loginService: LoginService,
               private catalogService: CatalogService) {
-                catalogService.getCatalogs();
+                
                }
 
   ngOnInit() {
-    this.catalogService.getCatalogs();
-    
     var userRole = this.loginService.getUserRole();
     console.log('Inside View Events Component, user role: ', userRole);
     if(userRole == 'Admin'){
@@ -63,16 +62,23 @@ export class ViewEventsComponent implements OnInit {
     }else if(userRole == 'Associate'){
       this.userAssociate = true;
     }
+    this.catalogService.getBoardingPoints(this.locationId);
+    this.catalogService.getDropPoints(this.locationId);
+    console.log('Before calling Event Service to get All Events:');
     this.eventService.getAllEvents().subscribe(
       (result : any) => {
         result.forEach(element => {
           console.log('element: ', element);
           var eventInfo: EventInfo = {
             id: element.id,
-            beneficiaryId: element.beneficiaryId,
-            councilId: element.councilId,
-            projectId: element.projectId,
-            categoryId: element.categoryId,
+            beneficiaryId: element.beneficiary.id,
+            beneficiaryName: element.beneficiary.name,
+            councilId: element.council.id,
+            councilName: element.council.name,
+            projectId: element.project.id,
+            projectName: element.project.name,
+            categoryId: element.projectCategory.id,
+            categoryName: element.projectCategory.name,
             name : element.title,
             desc: element.description,
             startTime: element.startTime,
@@ -81,7 +87,10 @@ export class ViewEventsComponent implements OnInit {
             volunteers: element.volunteers,
             pocId: element.pocId,
             pocContactNo: element.pocContactNo,
-            locationId: element.locationId,
+            locationId: element.location.id,
+            locationName: element.location.name,
+            locationState: element.location.state,
+            locationCountry: element.location.country,
             venueAddress: element.venueAddress,
             boardingTypeId: element.boardingTypeId,
             boardingPoints: element.boardingPoints,
@@ -106,20 +115,20 @@ export class ViewEventsComponent implements OnInit {
   }
 
   getProjectName(projectId: number): string{
-    this.catalogService.getProjectCategory(projectId);
+    //this.catalogService.getProjectCategory(projectId);
     this.projects=this.catalogService.projects;
-    console.log('Projects from CatalogService: ', this.projects);
+    //console.log('Projects from CatalogService: ', this.projects);
     return this.projects[projectId-1].name;
   }
 
   getCategoryName(projectId: number, categoryId: number):string{
-    this.catalogService.getCategoryName(projectId,categoryId);
+    //this.catalogService.getCategoryName(projectId,categoryId);
     console.log('Category Name from CatalogService: ', this.catalogService.categoryName);
     return this.catalogService.categoryName;
   }
   
   Download(){
-    this.exportAsExcelFile(this.data,'Sample');
+    this.exportAsExcelFile(this.eventInfos,'Events');
   }
   
   public exportAsExcelFile(json: any[], excelFileName: string): void {

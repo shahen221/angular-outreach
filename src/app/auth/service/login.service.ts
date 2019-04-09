@@ -8,6 +8,9 @@ export class LoginService {
 
     serviceurl: string = 'http://localhost:8092/api/login/authenticate';
     role: string;
+    employeeId: number;
+    firstName: string;
+    lastName: string;
     
     constructor(private http: HttpClient){
     }
@@ -19,7 +22,10 @@ export class LoginService {
                 (result: any) => {
                     if(result.status == 'SUCCESS'){
                         console.log('User credentials are correct');
-                        this.role = result.roleName; 
+                        this.role = result.roleName;
+                        this.employeeId = result.employeeId;
+                        this.firstName = result.firstName;
+                        this.lastName = result.lastName;
                     }else{
                         console.log('Invalid user credentials');
                         this.role = null;

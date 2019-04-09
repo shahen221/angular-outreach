@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "C:\\Users\\200816.CTS\\AppData\\Roaming\\npm\\node_modules\\@angular\\cli\\lib\\config\\schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -24,7 +24,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "c:\\Users\\Admin\\Documents\\workspace-angular\\outreach-ui\\node_modules\\bootstrap\\dist\\css\\bootstrap.css"
+              "C:\\Users\\200816.CTS\\Documents\\FSE\\Development\\Angular\\angular-outreach\\node_modules\\bootstrap\\dist\\css\\bootstrap.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

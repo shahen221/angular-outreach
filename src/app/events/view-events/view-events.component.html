@@ -17,11 +17,11 @@
 			<th>Action</th>
 		  </tr>
 		  <tr *ngFor="let eventInfo of eventInfos;let i=index">
-				<td>{{ getCouncilName(eventInfo.councilId) }}</td>
+				<td>{{ eventInfo.councilName }}</td>
 				<td>{{ eventInfo.name }}</td>
-				<td>{{ getProjectName(eventInfo.projectId) }}</td>
-				<td>{{ getCategoryName(eventInfo.projectId,eventInfo.categoryId) | async}}</td>
-				<td>02-02-2019</td>
+				<td>{{ eventInfo.projectName }}</td>
+				<td>{{ eventInfo.categoryName }}</td>
+				<td>{{ eventInfo.startTime }}</td>
 				<td>
 					<input type="button" name="viewEvent{{i}}" value="View" *ngIf="userAdmin">
 					<input type="button" name="registerEvent{{i}}" value="Register" *ngIf="userAssociate" [routerLink]="['../registerevent',eventInfo.id]">

@@ -1,5 +1,5 @@
 <div *ngIf="page == 'admin'">
-    Hi Admin
+    Hi {{firstName}}({{role}})
     <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
     <a class="nav-item nav-link" routerLink="favoriteevents" >Favorite Events</a>
     <a class="nav-item nav-link" routerLink="createevent"  >Create Event</a>
@@ -7,18 +7,18 @@
     <a class="nav-item nav-link" routerLink="createbulkevent" >Create Bulk Event</a>
 </div>
 <div *ngIf="page == 'pmo'">
-    Hi PMO
+    Hi {{firstName}}({{role}})
     <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
 </div>
 <div *ngIf="page == 'poc'">
-    Hi POC
+    Hi {{firstName}}({{role}})
     <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
 </div>
 <div *ngIf="page == 'associate'">
-    Hi Associate
+    Hi {{firstName}}({{role}})
     <a class="nav-item nav-link" routerLink="viewevents" >View Events</a>
-    <a class="nav-item nav-link" routerLink="myevents" >My Events</a>
-    <a class="nav-item nav-link" routerLink="registerevent" >Register Event</a>
+    <a class="nav-item nav-link" [routerLink]="['myevents',employeeId]" >My Events</a>
+    <a class="nav-item nav-link" routerLink="showwillingness" >Show Willingness</a>
     <a class="nav-item nav-link" routerLink="createbulkregistration" >Create Bulk Registration</a>
 </div>
 <a class="nav-item nav-link active" style="color:red;" href="#" (click)="clickActive($event,'')">Logout</a>

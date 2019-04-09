@@ -6,11 +6,11 @@
         <div class="flex-container">
             <div>
                 Beneficiary Name: 
-                <span>{{ eventInfo.beneficiaryId }}</span>
+                <span>{{ eventInfo.beneficiaryName }}</span>
             </div>
             <div>
                 Council Name: 
-                <span>{{ eventInfo.councilId }}</span>
+                <span>{{ eventInfo.councilName }}</span>
             </div>
             <div>
                 Event Name:
@@ -24,11 +24,11 @@
             </div>
             <div>
                 Project:
-                <span>{{ eventInfo.projectId }}</span>
+                <span>{{ eventInfo.projectName }}</span>
             </div>
             <div>
                 Project Category:
-                <span>{{ eventInfo.categoryId }}</span>
+                <span>{{ eventInfo.categoryName }}</span>
             </div>
             <div>
                 Event Date:
@@ -36,7 +36,7 @@
             </div>
             <div>
                 Total Volunteers:
-                <span>4</span>
+                <span>{{ eventInfo.volunteers }}</span>
             </div>
             <div>
                 POC ID:
@@ -46,18 +46,18 @@
                 Transport Boarding Type:
                 <span>{{ eventInfo.boardingTypeId }}</span>
             </div>
-            <input type="button" name="showRegistration" value="Register Event" (click)="displayRegistrationForm()">
-            <form [formGroup]="registerEventForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'display': none && !showRegistrationForm }">
+            <button class="btn btn-secondary" name="showRegistration" value="Register Event" (click)="displayRegistrationForm()">Register Event</button>
+            <form [formGroup]="registerEventForm" (ngSubmit)="onSubmit()" *ngIf="showRegistrationForm">
                 <div>
                     Transport Boarding point:
                     <select name="boardingPoint" formControlName="boardingPoint">
-                        <option *ngFor="let businessUnit of businessUnits" value="{{businessUnit.id}}">{{businessUnit.name}}</option>
+                        <option *ngFor="let boardingPoint of boardingPoints" value="{{boardingPoint.id}}">{{boardingPoint.name}}</option>
                     </select>
                 </div>
                 <div>
                     Transport Drop point:
                     <select name="dropPoint" formControlName="dropPoint">
-                        <option *ngFor="let businessUnit of businessUnits" value="{{businessUnit.id}}">{{businessUnit.name}}</option>
+                        <option *ngFor="let dropPoint of dropPoints" value="{{dropPoint.id}}">{{dropPoint.name}}</option>
                     </select>
                 </div>
                 <div>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div>
-                    <input type="button" name="back" value="Back to Events">
+                    <input type="button" name="back" value="Back to Events" [routerLink]="['../../viewevents']">
                     <button type="submit" class="btn btn-primary" name="registerEvent">Submit Registration</button>
                 </div>
             </form>

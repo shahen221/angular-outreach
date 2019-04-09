@@ -1,3 +1,29 @@
-<p>
-  my-events works!
-</p>
+<html>
+  <head>  
+  </head>
+  <body>
+    <div class="flex-container">
+        <h3 style="align-self: center">View My Events of Outreach</h3>
+    </div>
+    <table id="customers">
+      <tr>
+        <th>Event Name</th>
+        <th>Scheduled Date</th>
+        <th>Boarding Point</th>
+        <th>Drop Point</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let registeredEventInfo of registeredEventInfos;let i=index">
+        <td>{{ registeredEventInfo.eventName }}</td>
+        <td>{{ registeredEventInfo.scheduledDate }}</td>
+        <td>{{ registeredEventInfo.boardingPoint }}</td>
+        <td>{{ registeredEventInfo.dropPoint }}</td>
+        <td>{{ registeredEventInfo.status }}</td>
+        <td>
+          <input type="button" name="unregisterEvent{{i}}" value="UnRegister" [routerLink]="['../unregisterevent',registeredEventInfo.id]">
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

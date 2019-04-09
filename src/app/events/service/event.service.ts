@@ -26,4 +26,5 @@ export class EventService {
     getEventById(id: number) : any{
         return this.http.get(this.serviceurl+id);
     }
+
 }

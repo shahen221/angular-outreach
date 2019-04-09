@@ -19,4 +19,8 @@ export class RegisterService {
         return this.http.post(this.serviceurl+'bulksave', registerEventInfos);
     }
 
+    getEventsByAssociate(associateId: number): any{
+        return this.http.get(this.serviceurl+'events/'+associateId);
+    }
+
 }

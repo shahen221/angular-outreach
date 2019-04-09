@@ -12,6 +12,8 @@ import { MyEventsComponent } from './my-events/my-events.component';
 import { FavoriteEventsComponent } from './favorite-events/favorite-events.component';
 import { CreatebulkeventComponent } from './createbulkevent/createbulkevent.component';
 import { CreatebulkregistrationComponent } from './createbulkregistration/createbulkregistration.component';
+import { ShowwillingnessComponent } from './showwillingness/showwillingness.component';
+import { AssociateWillingnessService } from './service/associatewillingness.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { CreatebulkregistrationComponent } from './createbulkregistration/create
                   MyEventsComponent,
                   FavoriteEventsComponent,
                   CreatebulkeventComponent,
-                  CreatebulkregistrationComponent
+                  CreatebulkregistrationComponent,
+                  ShowwillingnessComponent
                 ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { CreatebulkregistrationComponent } from './createbulkregistration/create
   ],
   providers: [
               EventService,
-              RegisterService
+              RegisterService,
+              AssociateWillingnessService
             ]
 })
 export class EventsModule { }
