@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BoardingTypeService{
 
-    serviceUrl: string = 'http://localhost:8090/api/boardingtypes/';
+    serviceUrl: string = 'http://localhost:8089/catalog-service/api/boardingtypes/';
 
     constructor(private http : HttpClient){
     }

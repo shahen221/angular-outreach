@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class LoginService {
 
-    serviceurl: string = 'http://localhost:8092/api/login/authenticate';
+    serviceurl: string = 'http://localhost:8089/user-mgmt-service/api/login/authenticate';
     role: string;
     employeeId: number;
     firstName: string;

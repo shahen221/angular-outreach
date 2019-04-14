@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProjectService{
 
-    serviceUrl: string = 'http://localhost:8090/api/projects/';
+    serviceUrl: string = 'http://localhost:8089/catalog-service/api/projects/';
 
     constructor(private http : HttpClient){
     }

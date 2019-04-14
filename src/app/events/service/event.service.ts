@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class EventService {
 
-    serviceurl: string = 'http://localhost:8091/api/events/';
+    serviceurl: string = 'http://localhost:8089/event-mgmt-service/api/events/';
     
     constructor(private http: HttpClient){
     }

@@ -8,7 +8,7 @@ import { BusinessUnit } from '../model/businessunit';
 @Injectable()
 export class BusinessUnitService implements OnInit{
 
-    serviceUrl: string = 'http://localhost:8090/api/businessunits/';
+    serviceUrl: string = 'http://localhost:8089/catalog-service/api/businessunits/';
     businessUnits:BusinessUnit[] =[];
 
     constructor(private http : HttpClient){

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class AssociateWillingnessService {
 
-    serviceurl: string = 'http://localhost:8091/api/willingness/';
+    serviceurl: string = 'http://localhost:8089/event-mgmt-service/api/willingness/';
     
     constructor(private http: HttpClient){
     }

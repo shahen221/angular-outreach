@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LocationService{
 
-    serviceUrl: string = 'http://localhost:8090/api/locations/';
+    serviceUrl: string = 'http://localhost:8089/catalog-service/api/locations/';
     
     constructor(private http : HttpClient){
     }

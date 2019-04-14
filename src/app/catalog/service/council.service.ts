@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class CouncilService{
 
-    serviceurl: string = 'http://localhost:8090/api/councils/1';
-    serviceurl1: string = 'http://localhost:8090/api/councils/';
+    serviceurl: string = 'http://localhost:8089/catalog-service/api/councils/1';
+    serviceurl1: string = 'http://localhost:8089/catalog-service/api/councils/';
     
     constructor(private http: HttpClient){
     }

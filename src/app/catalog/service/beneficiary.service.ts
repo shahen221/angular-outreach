@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BeneficiaryService{
 
-    serviceUrl: string = 'http://localhost:8090/api/beneficiaries/';
+    serviceUrl: string = 'http://localhost:8089/catalog-service/api/beneficiaries/';
 
     constructor(private http : HttpClient){
     }

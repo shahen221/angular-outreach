@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DropPointsService{
 
-    serviceUrl: string = 'http://localhost:8090/api/droppoints/';
+    serviceUrl: string = 'http://localhost:8089/catalog-service/api/droppoints/';
 
     constructor(private http : HttpClient){
     }
